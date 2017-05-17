@@ -46,15 +46,18 @@ class ViewController: UIViewController {
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2000, 2000)
-        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.setRegion(coordinateRegion, animated: false)
     }
 
-    //create a random pokemon sighting in center of map
+    //create a random pokemon sighting in center of map when button is pressed
     @IBAction func spotRandomPokemon(_ sender: Any) {
         let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         let rand = arc4random_uniform(151) + 1
         createSighting(forLocation: loc, withPokemon: Int(rand))
+        
+        performSegue(withIdentifier: "SegueToModal", sender: pokemon)
     }
+    
     
     func createSighting(forLocation location: CLLocation, withPokemon pokeId: Int) {
         geoFire.setLocation(location, forKey: "\(pokeId)")
@@ -71,7 +74,12 @@ class ViewController: UIViewController {
         })
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueToModal" {
+            let modalView = segue.destination as? ModalVC
+            //modalView?.listOfPokemon = pokemon
+        }
+    }
 }
 
 extension ViewController: MKMapViewDelegate {
@@ -97,6 +105,7 @@ extension ViewController: MKMapViewDelegate {
                 MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving
             ] as [String : Any]
             
+            //open apple maps with pokemon location as destination
             MKMapItem.openMaps(with: [destination], launchOptions: options)
         }
     }
@@ -117,6 +126,12 @@ extension ViewController: CLLocationManagerDelegate {
                 mapHasCenteredOnce = true
             }
         }
+    }
+    
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        showSightingsOnMap(location: loc)
+
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

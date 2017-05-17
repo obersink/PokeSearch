@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		19DF3A8C07CE747279BD1339 /* Pods_PokeSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD70E25D455497F38FC27B1 /* Pods_PokeSearch.framework */; };
+		8C16A2C31ECBFEDC0023872F /* ModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C16A2C21ECBFEDC0023872F /* ModalVC.swift */; };
 		8C391E7A1EC82980002B8A38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C391E791EC82980002B8A38 /* AppDelegate.swift */; };
 		8C391E7C1EC82980002B8A38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C391E7B1EC82980002B8A38 /* ViewController.swift */; };
 		8C391E7F1EC82980002B8A38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C391E7D1EC82980002B8A38 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C16A2C21ECBFEDC0023872F /* ModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalVC.swift; sourceTree = "<group>"; };
 		8C391E761EC82980002B8A38 /* PokeSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C391E791EC82980002B8A38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C391E7B1EC82980002B8A38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				8C391E791EC82980002B8A38 /* AppDelegate.swift */,
 				8C391E7B1EC82980002B8A38 /* ViewController.swift */,
+				8C16A2C21ECBFEDC0023872F /* ModalVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C391EA01EC82ECF002B8A38 /* GFBase32Utils.m in Sources */,
+				8C16A2C31ECBFEDC0023872F /* ModalVC.swift in Sources */,
 				8CF915A31EC95FB400725356 /* PokeAnnotation.swift in Sources */,
 				8C391E7C1EC82980002B8A38 /* ViewController.swift in Sources */,
 				8C391EA11EC82ECF002B8A38 /* GFGeoHash.m in Sources */,
