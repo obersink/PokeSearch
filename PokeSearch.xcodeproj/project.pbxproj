@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		19DF3A8C07CE747279BD1339 /* Pods_PokeSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD70E25D455497F38FC27B1 /* Pods_PokeSearch.framework */; };
 		8C16A2C31ECBFEDC0023872F /* ModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C16A2C21ECBFEDC0023872F /* ModalVC.swift */; };
+		8C16A2C51ECD4D300023872F /* PokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C16A2C41ECD4D300023872F /* PokeCell.swift */; };
 		8C391E7A1EC82980002B8A38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C391E791EC82980002B8A38 /* AppDelegate.swift */; };
 		8C391E7C1EC82980002B8A38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C391E7B1EC82980002B8A38 /* ViewController.swift */; };
 		8C391E7F1EC82980002B8A38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C391E7D1EC82980002B8A38 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		8C16A2C21ECBFEDC0023872F /* ModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalVC.swift; sourceTree = "<group>"; };
+		8C16A2C41ECD4D300023872F /* PokeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeCell.swift; sourceTree = "<group>"; };
 		8C391E761EC82980002B8A38 /* PokeSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C391E791EC82980002B8A38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C391E7B1EC82980002B8A38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				8C391E7D1EC82980002B8A38 /* Main.storyboard */,
 				8C391E821EC82980002B8A38 /* LaunchScreen.storyboard */,
+				8C16A2C41ECD4D300023872F /* PokeCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				8C16A2C31ECBFEDC0023872F /* ModalVC.swift in Sources */,
 				8CF915A31EC95FB400725356 /* PokeAnnotation.swift in Sources */,
 				8C391E7C1EC82980002B8A38 /* ViewController.swift in Sources */,
+				8C16A2C51ECD4D300023872F /* PokeCell.swift in Sources */,
 				8C391EA11EC82ECF002B8A38 /* GFGeoHash.m in Sources */,
 				8C391E7A1EC82980002B8A38 /* AppDelegate.swift in Sources */,
 				8C391E9F1EC82ECF002B8A38 /* GeoFire.m in Sources */,

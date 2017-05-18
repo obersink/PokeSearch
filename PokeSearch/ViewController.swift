@@ -10,12 +10,11 @@ import UIKit
 import MapKit
 import FirebaseDatabase
 
+
 class ViewController: UIViewController {
 
     var geoFire: GeoFire!
     var geoFireRef: FIRDatabaseReference!
-    
-    
     
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
@@ -26,6 +25,7 @@ class ViewController: UIViewController {
         
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.follow
+        presentingViewController?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         
         geoFireRef = FIRDatabase.database().reference()
         geoFire = GeoFire(firebaseRef: geoFireRef)
@@ -53,12 +53,12 @@ class ViewController: UIViewController {
     @IBAction func spotRandomPokemon(_ sender: Any) {
         let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         let rand = arc4random_uniform(151) + 1
-        createSighting(forLocation: loc, withPokemon: Int(rand))
+        //createSighting(forLocation: loc, withPokemon: Int(rand))
         
         performSegue(withIdentifier: "SegueToModal", sender: pokemon)
     }
     
-    
+    //saves to firebase at key with location (keys are unique only)
     func createSighting(forLocation location: CLLocation, withPokemon pokeId: Int) {
         geoFire.setLocation(location, forKey: "\(pokeId)")
     }
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SegueToModal" {
             let modalView = segue.destination as? ModalVC
-            //modalView?.listOfPokemon = pokemon
+            modalView?.listOfPokemon = pokemon
         }
     }
 }
