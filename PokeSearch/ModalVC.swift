@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol ModalVCDelegate {
+    func pokemonDidSelect(pokeId: Int)
+}
+
 class ModalVC: UIViewController {
     
     var listOfPokemon = [String]()
     var filteredPokemon = [String]()
     var inSearchMode: Bool = false
+    
+    var delegate: ModalVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +70,11 @@ extension ModalVC: UICollectionViewDataSource {
         else {
             poke = listOfPokemon[indexPath.row]
         }
-        //performSegue(withIdentifier: "SegueToPokemonDetailVC", sender: poke)
         
+        if let delegate = delegate {
+            delegate.pokemonDidSelect(pokeId: indexPath.row)
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

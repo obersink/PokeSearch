@@ -10,19 +10,19 @@ import UIKit
 import MapKit
 import FirebaseDatabase
 
-
-class ViewController: UIViewController {
+class ViewController: UIViewController, ModalVCDelegate {
 
     var geoFire: GeoFire!
     var geoFireRef: FIRDatabaseReference!
+    var modalVC: ModalVC!
     
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     var mapHasCenteredOnce = false
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.follow
         presentingViewController?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
@@ -33,6 +33,11 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         locationAuthStatus()
+    }
+    
+    func pokemonDidSelect(pokeId: Int) {
+        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        createSighting(forLocation: loc, withPokemon: pokeId + 1)
     }
     
     func locationAuthStatus() {
@@ -51,10 +56,6 @@ class ViewController: UIViewController {
 
     //create a random pokemon sighting in center of map when button is pressed
     @IBAction func spotRandomPokemon(_ sender: Any) {
-        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-        let rand = arc4random_uniform(151) + 1
-        //createSighting(forLocation: loc, withPokemon: Int(rand))
-        
         performSegue(withIdentifier: "SegueToModal", sender: pokemon)
     }
     
@@ -76,8 +77,11 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SegueToModal" {
-            let modalView = segue.destination as? ModalVC
-            modalView?.listOfPokemon = pokemon
+            if let modalView = segue.destination as? ModalVC {
+                modalView.listOfPokemon = pokemon  //redundant?
+                modalVC = modalView
+                modalVC.delegate = self
+            }
         }
     }
 }
